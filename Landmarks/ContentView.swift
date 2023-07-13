@@ -19,14 +19,23 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        Text("Turtle Rock").font(.title).fontWeight(.black).foregroundColor(Color.orange).padding() 
+        Text("Turtle Rock").font(.title).fontWeight(.black).foregroundColor(Color.orange).padding()
         NavigationView {
             List {
                 ForEach(items) { item in
                     
                     NavigationLink {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                            Text("Hello SwiftUI").padding()
+                            .font(.headline)
+                        VStack(alignment: .leading) {
+                            Text("Turtle Rock").font(.subheadline)
+                            HStack {
+                                Text("Joshua Tree Naational Park").font(.subheadline)
+                                Spacer()
+                                Text("California").font(.subheadline)
+                            }
+                        }
+                        .padding()
                     } label: {
                         Text(item.timestamp!, formatter: itemFormatter)
                     }

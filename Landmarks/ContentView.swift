@@ -27,21 +27,36 @@ struct ContentView: View {
                     NavigationLink {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                             .font(.headline)
-                        VStack(alignment: .leading) {
-                            Text("Turtle Rock").font(.subheadline)
-                            HStack {
-                                Text("Joshua Tree Naational Park").font(.subheadline)
-                                Spacer()
-                                Text("California").font(.subheadline)
+                        VStack {
+                            MapView()
+                                .ignoresSafeArea(edges: .top)
+                                .frame(height: 300)
+                            CircleImage()
+                                  .offset(y: -130)
+                                  .padding(.bottom, -130)
+                            VStack(alignment: .leading) {
+                                Text("Turtle Rock").font(.subheadline)
+                                HStack {
+                                    Text("Joshua Tree Naational Park").font(.subheadline)
+                                    Spacer()
+                                    Text("California").font(.subheadline)
+                                }
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                Divider()
+                                Text("About Turtle Rock")
+                                    .font(.title2)
+                                Text("Descriptive text goes here.")
                             }
+                            .padding()
+                            Spacer()
                         }
-                        .padding()
                     } label: {
                         Text(item.timestamp!, formatter: itemFormatter)
                     }
                 }
                 .onDelete(perform: deleteItems)
-            }            
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -54,6 +69,7 @@ struct ContentView: View {
             }
             Text("Select an item")
         }
+        
     }
 
     private func addItem() {

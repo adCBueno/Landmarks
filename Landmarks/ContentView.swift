@@ -8,6 +8,8 @@
 import SwiftUI
 import CoreData
 
+// SwiftUI view files declare two structures. The first structure conforms to the View protocol and describes the view’s content and layout.
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -17,11 +19,14 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
+        Text("Turtle Rock").font(.title).fontWeight(.black).foregroundColor(Color.orange).padding() 
         NavigationView {
             List {
                 ForEach(items) { item in
+                    
                     NavigationLink {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                            Text("Hello SwiftUI").padding()
                     } label: {
                         Text(item.timestamp!, formatter: itemFormatter)
                     }
@@ -81,6 +86,7 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
+// The second structure declares a preview for that view.
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)

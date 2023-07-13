@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+// The @main attribute identifies the app’s entry point.
 @main
 struct LandmarksApp: App {
     let persistenceController = PersistenceController.shared
 
+    //The structure’s body property returns one or more scenes, which in turn provide content for display.
     var body: some Scene {
         WindowGroup {
             ContentView()

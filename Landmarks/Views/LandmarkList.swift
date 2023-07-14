@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LandmarkList: View {
     
-    @State private var showFavoritesOnly = true
+    @State private var showFavoritesOnly = false
     
      // Compute a filtered version of the landmarks list by checking the showFavoritesOnly property and each landmark.isFavorite value.
     
@@ -20,15 +20,21 @@ struct LandmarkList: View {
     }
     
     var body: some View {
-        /*
-         Lists work with identifiable data. You can make your data identifiable in one of two ways: by passing along with your data a key path to a property that uniquely identifies each element, or by making your data type conform to the Identifiable protocol.
-         */
+        
+        // Lists work with identifiable data. You can make your data identifiable in one of two ways: by passing along with your data a key path to a property that uniquely identifies each element, or by making your data type conform to the Identifiable protocol.
+         
         NavigationView {
-            List(landmarks) { landmark in
-                NavigationLink {
-                    LandmarkDetail(landmark: landmark)
-                } label: {
-                    LandmarkRow(landmark: landmark)
+            List {
+                Toggle(isOn: $showFavoritesOnly) {
+                    Text("Favorites only")
+                }
+                
+                ForEach(filteredLandmarks) { landmark in
+                    NavigationLink {
+                        LandmarkDetail(landmark: landmark)
+                    } label: {
+                        LandmarkRow(landmark: landmark)
+                    }
                 }
             }
             .navigationTitle("Landmarks")

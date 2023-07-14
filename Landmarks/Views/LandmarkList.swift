@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct LandmarkList: View {
+    
+    @State private var showFavoritesOnly = true
+    
+     // Compute a filtered version of the landmarks list by checking the showFavoritesOnly property and each landmark.isFavorite value.
+    
+    var filteredLandmarks: [Landmark] {
+        landmarks.filter { landmark in
+            (!showFavoritesOnly || landmark.isFavorite)
+        }
+    }
+    
     var body: some View {
         /*
          Lists work with identifiable data. You can make your data identifiable in one of two ways: by passing along with your data a key path to a property that uniquely identifies each element, or by making your data type conform to the Identifiable protocol.

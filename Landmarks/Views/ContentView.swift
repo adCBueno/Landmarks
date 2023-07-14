@@ -75,7 +75,7 @@ struct ContentView: View {
                 //  wrap the returned row in a NavigationLink, specifying the LandmarkDetail view as the destination.
                 
                 NavigationLink {
-                    LandmarkDetail()
+                    LandmarkDetail(landmark: landmark)
                 } label: {
                     LandmarkRow(landmark: landmark)
                 }

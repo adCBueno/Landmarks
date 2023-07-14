@@ -13,6 +13,10 @@ final class ModelData: ObservableObject {
     // Create an array of landmarks that you initialize from landmarkData.json.
     @Published var landmarks: [Landmark] = load("landmarkData.json")
     
+    var features: [Landmark] {
+        landmarks.filter {$0.isFeatured}
+    }
+    
     var categories: [String: [Landmark]] {
         Dictionary(
             grouping: landmarks,

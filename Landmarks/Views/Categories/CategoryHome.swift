@@ -9,16 +9,23 @@ import SwiftUI
 
 struct CategoryHome: View {
     @EnvironmentObject var modelData: ModelData
+
     var body: some View {
         NavigationView {
             List {
-                ForEach(modelData.categories.keys.sorted(), id: \.self) {key in
-                    Text(key)                    
+                modelData.features[0].image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .clipped()
+                    .listRowInsets(EdgeInsets())
+
+                ForEach(modelData.categories.keys.sorted(), id: \.self) { key in
+                    CategoryRow(categoryName: key, items: modelData.categories[key]!)
                 }
+                .listRowInsets(EdgeInsets())
             }
-            Text("Hello, World!")
-                .navigationTitle("Featured")
-                
+            .navigationTitle("Featured")
         }
     }
 }

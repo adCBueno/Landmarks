@@ -25,6 +25,7 @@
 		CE6C6E552A61781D00886227 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C6E542A61781C00886227 /* LandmarkList.swift */; };
 		CE6C6E9F2A61802E00886227 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C6E9E2A61802E00886227 /* LandmarkDetail.swift */; };
 		CE6C6EA12A61A6D200886227 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C6EA02A61A6D200886227 /* FavoriteButton.swift */; };
+		CE6C6EA72A61C92A00886227 /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C6EA62A61C92A00886227 /* CategoryHome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		CE6C6E542A61781C00886227 /* LandmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkList.swift; sourceTree = "<group>"; };
 		CE6C6E9E2A61802E00886227 /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
 		CE6C6EA02A61A6D200886227 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		CE6C6EA62A61C92A00886227 /* CategoryHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		CE6C6E4D2A6174B300886227 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE6C6EA42A61C90A00886227 /* Categories */,
 				CE6C6EA32A61A83100886227 /* Leadmarks */,
 				CE6C6EA22A61A80500886227 /* Helpers */,
 				CE44A1802A604687004E7DA0 /* ContentView.swift */,
@@ -198,6 +201,14 @@
 				CE6C6E522A6175CA00886227 /* LandmarkRow.swift */,
 			);
 			path = Leadmarks;
+			sourceTree = "<group>";
+		};
+		CE6C6EA42A61C90A00886227 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C6EA62A61C92A00886227 /* CategoryHome.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6C6EA72A61C92A00886227 /* CategoryHome.swift in Sources */,
 				CE1C6D602A608DDB00A006AE /* Landmark.swift in Sources */,
 				CE44A1882A604689004E7DA0 /* Persistence.swift in Sources */,
 				CE1C6D5C2A60806B00A006AE /* MapView.swift in Sources */,

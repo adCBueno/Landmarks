@@ -12,6 +12,13 @@ import Combine
 final class ModelData: ObservableObject {
     // Create an array of landmarks that you initialize from landmarkData.json.
     @Published var landmarks: [Landmark] = load("landmarkData.json")
+    
+    var categories: [String: [Landmark]] {
+        Dictionary(
+            grouping: landmarks,
+            by: { $0.category.rawValue }
+        )
+    }
 }
 
 // Create a load(_:) method that fetches JSON data with a given name from the app’s main bundle.

@@ -11,6 +11,14 @@ import CoreData
 // SwiftUI view files declare two structures. The first structure conforms to the View protocol and describes the view’s content and layout.
 
 struct ContentView: View {
+    
+    @State private var selection: Tab = .featured
+    
+    enum Tab {
+        case featured
+        case list
+    }
+    
     // @Environment(\.managedObjectContext) private var viewContext
     
     /*@FetchRequest(
@@ -20,7 +28,19 @@ struct ContentView: View {
     
     var body: some View {
            
-        LandmarkList()
+        TabView(selection: $selection) {
+            CategoryHome()
+                .tabItem {
+                    Label("Featured", systemImage: "star")
+                }
+                .tag(Tab.featured)
+
+            LandmarkList()
+                .tabItem {
+                    Label("List", systemImage: "list.bullet")
+                }
+                .tag(Tab.list)
+        }
         
     }
         /*NavigationView {

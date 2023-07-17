@@ -17,6 +17,13 @@ struct ProfileHost: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
+                // the Cancel button doesn’t apply the edits to the real profile data in its closure.
+                if editMode?.wrappedValue == .active {
+                    Button("Cancel", role: .cancel) {
+                        draftProfile = modelData.profile
+                        editMode?.animation().wrappedValue = .inactive
+                    }
+                }
                 Spacer()
                 // The EditButton controls the same editMode environment value that you accessed in the previous step.
                 EditButton()
@@ -24,7 +31,15 @@ struct ProfileHost: View {
             if editMode?.wrappedValue == .inactive {
                 // To avoid updating the global app state before confirming any edits — such as while the user enters their name — the editing view operates on a copy of itself.
                 ProfileSummary(profile: modelData.profile)
-            } else { ProfileEditor(profile: $draftProfile) }
+            } else {
+                ProfileEditor(profile: $draftProfile)
+                    .onAppear {
+                        draftProfile = modelData.profile
+                    }
+                    .onDisappear {
+                        modelData.profile = draftProfile
+                    }
+            }
         }
         .padding()
     }

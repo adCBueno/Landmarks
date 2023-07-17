@@ -24,7 +24,7 @@ struct ProfileHost: View {
             if editMode?.wrappedValue == .inactive {
                 // To avoid updating the global app state before confirming any edits — such as while the user enters their name — the editing view operates on a copy of itself.
                 ProfileSummary(profile: modelData.profile)
-            } else { Text("Profile Editor") }
+            } else { ProfileEditor(profile: $draftProfile) }
         }
         .padding()
     }
